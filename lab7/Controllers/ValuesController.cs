@@ -22,6 +22,7 @@ namespace lab7.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
+            throw new SystemException("coś poszło nie tak ");
             return "value";
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using lab7.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -35,7 +36,7 @@ namespace lab7
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseError();
             app.UseMvc();
         }
     }
