@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using NLog;
 
 namespace lab7.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        // GET api/values
+        private readonly Logger _logger = LogManager.GetCurrentClassLogger();
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            _logger.Warn("Jakiś log ");
             return new string[] { "value1", "value2" };
         }
 
