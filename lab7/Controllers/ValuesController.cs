@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using lab7.ModelsForMapper;
 using Microsoft.AspNetCore.Mvc;
 using NLog;
 
@@ -11,11 +13,19 @@ namespace lab7.Controllers
     public class ValuesController : Controller
     {
         private readonly Logger _logger = LogManager.GetCurrentClassLogger();
+        private readonly IMapper _mapper;
+        public ValuesController(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
             _logger.Warn("Jakiś log ");
-            return new string[] { "value1", "value2" };
+            Customer customer = new Customer() { Id = 5, Name = "Jan", Surname = "Kowalsi" };
+            CustomerDto customerDto = _mapper.Map<CustomerDto>(customer);
+
+            return Ok(customerDto);
         }
 
         // GET api/values/5
